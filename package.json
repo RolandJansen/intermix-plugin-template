@@ -21,11 +21,23 @@
   "bugs": {
     "url": "https://github.com/RolandJansen/intermix-plugin-template/issues"
   },
+  "jest": {
+	  "transform": {
+		  "^.+\\.(t|j)sx?$": "ts-jest"
+	  },
+	  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+	  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+     	  "testURL": "http://localhost/"
+  },
   "homepage": "https://github.com/RolandJansen/intermix-plugin-template#readme",
   "devDependencies": {
+    "@types/jest": "^26.0.9",
+    "jest": "^26.3.0",
+    "ts-jest": "^26.2.0",
     "ts-loader": "^8.0.2",
     "typescript": "^3.9.7",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   }
 }
+
