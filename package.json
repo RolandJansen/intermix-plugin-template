@@ -1,0 +1,31 @@
+{
+  "name": "intermix-plugin-template",
+  "version": "1.0.0",
+  "description": "A template for intermix plugin developers.",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RolandJansen/intermix-plugin-template.git"
+  },
+  "keywords": [
+    "intermix",
+    "audio",
+    "plugin"
+  ],
+  "author": "Roland Jansen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RolandJansen/intermix-plugin-template/issues"
+  },
+  "homepage": "https://github.com/RolandJansen/intermix-plugin-template#readme",
+  "devDependencies": {
+    "ts-loader": "^8.0.2",
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
