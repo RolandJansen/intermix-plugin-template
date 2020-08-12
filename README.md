@@ -5,7 +5,16 @@ A template for developers of intermix plugins
 
 ## Install
 
-This is a template repository. You can either build another clean repository from it or fork it (which is not how it's ment to be used but you can do it).
+This is a template repository. You can either build another clean repository from it or do a fork (which is not how it's ment to be used but you can do it).
+
+## Adaption
+
+This should be changed:
+
+* License (at least copyright infos)
+* package.json (everything before *scripts*)
+* Plugin class should be renamed, also in the index.ts
+* README should be replaced
 
 ## Usage
 

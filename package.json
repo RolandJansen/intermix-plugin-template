@@ -18,17 +18,25 @@
     "plugin"
   ],
   "scripts": {
-    "build": "webpack",
-    "test": "test"
+    "build": "webpack --config webpack.prod.js",
+    "watch": "webpack-dev-server --config webpack.dev.js",
+    "test": "jest --coverage"
   },
   "private": true,
   "jest": {
-	  "transform": {
-		  "^.+\\.(t|j)sx?$": "ts-jest"
-	  },
-	  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-	  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
-     	  "testURL": "http://localhost/"
+    "transform": {
+      "^.+\\.(t|j)sx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testURL": "http://localhost/"
   },
   "devDependencies": {
     "@types/jest": "^26.0.9",
@@ -37,6 +45,8 @@
     "ts-loader": "^8.0.2",
     "typescript": "^3.9.7",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.1.1"
   }
 }

@@ -1,2 +1,2 @@
-import MyPlugin from "MyPlugin";
+import MyPlugin from "./MyPlugin";
 export default MyPlugin;
