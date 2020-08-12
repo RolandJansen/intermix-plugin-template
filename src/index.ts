@@ -1,1 +1,2 @@
-// nothing here yet
+import MyPlugin from "MyPlugin";
+export default MyPlugin;
