@@ -1,5 +1,5 @@
 const typescript = require("@wessberg/rollup-plugin-ts");
-const omt = require("@surma/rollup-plugin-off-main-thread");
+const resolve = require("rollup-plugin-node-resolve");
 const pkg = require("./package.json");
 
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
@@ -8,8 +8,9 @@ module.exports = {
     input: pkg.entry,
     output: [
         {
-            dir: "dist",
-            format: "es",
+            name: pkg.main.slice(0, -3),
+            file: pkg.outDir + "/" + pkg.main,
+            format: "iife",
             sourcemap: true,
         },
     ],
@@ -18,7 +19,7 @@ module.exports = {
         ...Object.keys(pkg.peerDependencies || {})
     ],
     plugins: [
+        resolve({ module: true, extensions }),
         typescript(),
-        omt(),
     ],
 };
