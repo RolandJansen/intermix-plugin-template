@@ -9,7 +9,22 @@ export default class MyPlugin extends AbstractPlugin implements IPlugin {
         desc: "My awesome intermix plugin",
     };
 
-    public actionDefs: IOscActionDef[];
+    public actionDefs: IOscActionDef[] = [
+        {
+            address: "/intermix/plugin/<UID>/ACTION1",
+            typeTag: ",i",
+            value: 0,
+            range: [0, 127],
+            description: "action one",
+        },
+        {
+            address: "/intermix/plugin/<UID>/ACTION2",
+            typeTag: ",i",
+            value: 1,
+            range: [0, 127],
+            description: "action two",
+        },
+    ];;
 
     public get inputs(): AudioNode[] {
         return [];
