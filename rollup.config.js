@@ -1,39 +1,42 @@
 const typescript = require("@wessberg/rollup-plugin-ts");
 const resolve = require("rollup-plugin-node-resolve");
 const commonjs = require("rollup-plugin-commonjs");
-const liveServer = require("rollup-plugin-live-server");
+// const externalGlobals = require("rollup-plugin-external-globals");
+// const multiInput = require("rollup-plugin-multi-input").default;
+const liveServer = require("rollup-plugin-live-server").liveServer;
 const pkg = require("./package.json");
+// const createPlugin = require("rollup-plugin-external-globals");
 
-const pkgName = pkg.main.slice(0, -3);
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
-const input = pkg.entry;
-const output = [
-    {
-        name: "intermix.plugins." + pkgName,
-        file: pkg.outDir + "/" + pkg.main,
-        format: "iife",
-        globals: { intermix: "intermix" },
-        sourcemap: true,
-    },
+
+let output = {
+    name: "intermix.plugins.myPlugin", // + pkgName,
+    dir: pkg.outDir,
+    format: "iife",
+    // globals: { intermix: "intermix" },
+    sourcemap: true,
+}
+const inputProd = pkg.entry;
+const inputDev = pkg.entryDev;
+let input = inputProd;
+// let output = {
+//     file: pkg.main,
+//     format: "es",
+// }
+
+let external = [
+    ...Object.keys(pkg.peerDependencies || {}),
+    ...Object.keys(pkg.dependencies || {})
 ];
-// const globals = {
-//     "intermix": "intermix",
-// };
-const external = [
-    ...Object.keys(pkg.dependencies || {}),
-    ...Object.keys(pkg.peerDependencies || {})
-];
-const plugins = [
+let plugins = [
     resolve({ extensions }),
     commonjs(),
+    // externalGlobals({
+    //     intermix: "intermix"
+    // }),
+    // multiInput(),
     typescript(),
 ];
-const config = {
-    input,
-    output,
-    external,
-    plugins,
-};
 
 const liveServerConfig = {
     port: 5000,
@@ -49,8 +52,22 @@ const liveServerConfig = {
 };
 
 if (process.env.TARGET === "debug") {
-    config.plugins = [...plugins, liveServer.liveServer(liveServerConfig)];
-    config.external = [];
+    input = inputDev;
+    output = {
+        dir: pkg.outDir,
+        format: "es",
+        manualChunks: {
+            intermix: ["intermix"],
+        }
+    }
+    external = [];
+    plugins = [...plugins, liveServer(liveServerConfig)];
 }
 
+const config = {
+    input,
+    output,
+    external,
+    plugins,
+};
 module.exports = config;

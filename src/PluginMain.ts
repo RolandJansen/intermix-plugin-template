@@ -1,11 +1,11 @@
-import { AbstractPlugin, IPlugin, IPluginMetaData, IOscActionDef, Tuple } from "intermix";
+import { AbstractPlugin, IPlugin, IPluginMetaData, IOscActionDef, Tuple, IPluginConstructor } from "intermix";
 
-export default class MyPlugin extends AbstractPlugin implements IPlugin {
-    public readonly metaData: IPluginMetaData = {
+const Plugin: IPluginConstructor = class IntermixPlugin extends AbstractPlugin implements IPlugin {
+    public static readonly metaData: IPluginMetaData = {
         type: "instrument",
         name: "MyPlugin",
         version: "1.0.0",
-        authors: "Your name here",
+        authors: "Your name(s) here",
         desc: "My awesome intermix plugin",
     };
 
@@ -24,7 +24,7 @@ export default class MyPlugin extends AbstractPlugin implements IPlugin {
             range: [0, 127],
             description: "action two",
         },
-    ];;
+    ];
 
     public get inputs(): AudioNode[] {
         return [];
@@ -45,4 +45,5 @@ export default class MyPlugin extends AbstractPlugin implements IPlugin {
         }
         return false;
     }
-}
+};
+export default Plugin;

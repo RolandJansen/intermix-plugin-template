@@ -4,9 +4,10 @@
   "author": "Your Name",
   "version": "1.0.0",
   "license": "MIT",
-  "entry": "src/index.ts",
+  "entry": "src/PluginMain.ts",
+  "entryDev": "src/index.ts",
   "outDir": "dist",
-  "main": "MyPlugin.js",
+  "main": "dist/Plugin.js",
   "homepage": "https://github.com/RolandJansen/intermix-plugin-template#readme",
   "bugs": {
     "url": "https://github.com/RolandJansen/intermix-plugin-template/issues"
@@ -23,7 +24,7 @@
   "scripts": {
     "clean": "rimraf dist/*",
     "build": "npm run clean && rollup --config",
-    "start": "cross-env TARGET='debug' rollup --config --watch",
+    "start": "npm run clean && cross-env TARGET='debug' rollup --config --watch",
     "test": "jest --coverage",
     "watch": "jest --watch"
   },
@@ -56,6 +57,7 @@
     "rollup": "^2.26.5",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-live-server": "^2.0.0",
+    "rollup-plugin-multi-input": "^1.1.1",
     "rollup-plugin-node-resolve": "^5.2.0",
     "ts-jest": "^26.2.0",
     "typescript": "^3.9.7"

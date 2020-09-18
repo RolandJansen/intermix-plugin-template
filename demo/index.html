@@ -1,11 +1,37 @@
 <html>
-    <head>
-        <title>Plugin Testpage</title>
-    </head>
-    <body>
-        <p>
-            An entry point for the plugin testpage that is currently just an empty shell.
-            It will be more useful when plugins have user interfaces.
-        </p>
-    </body>
+
+<head>
+    <title>Plugin Testpage</title>
+    <script type="module" src="/dist/index.js"></script>
+    <style>
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        An entry point for the plugin testpage that is currently just an empty shell.
+        It will be more useful when plugins have user interfaces.
+    </p>
+</body>
+<script>
+    // redux is reading the 'process' global var
+    // that doesn't exist in the browser, so we have to fake it.
+    const process = {
+        env: {
+            NODE_ENV: 'debug',
+        }
+    };
+</script>
+<script type="module">
+    import ThePlugin from "/dist/index.js";
+    import * as intermix from "/dist/index.js";
+
+    const newPluginName = ThePlugin.metaData.name;
+    intermix.availablePlugins[newPluginName] = ThePlugin;
+    console.log(intermix.availablePlugins);
+</script>
+
 </html>

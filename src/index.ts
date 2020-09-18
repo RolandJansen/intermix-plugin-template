@@ -1,2 +1,3 @@
-import MyPlugin from "./MyPlugin";
+import MyPlugin from "./PluginMain";
 export default MyPlugin;
+export * from "intermix";
