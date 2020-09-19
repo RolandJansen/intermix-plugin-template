@@ -1,6 +1,8 @@
-import { AbstractPlugin, IPlugin, IPluginMetaData, IOscActionDef, Tuple, IPluginConstructor } from "intermix";
+import { AbstractPlugin } from "../node_modules/intermix/esm/registry/AbstractPlugin";
+import { IPlugin, IPluginMetaData, IOscActionDef, Tuple, IPluginConstructor } from "../node_modules/intermix/esm/registry/interfaces";
+// import { AbstractPlugin, IPlugin, IPluginMetaData, IOscActionDef, Tuple, IPluginConstructor } from "intermix";
 
-const Plugin: IPluginConstructor = class IntermixPlugin extends AbstractPlugin implements IPlugin {
+const Plugin: IPluginConstructor = class extends AbstractPlugin implements IPlugin {
     public static readonly metaData: IPluginMetaData = {
         type: "instrument",
         name: "MyPlugin",
