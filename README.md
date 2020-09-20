@@ -1,5 +1,5 @@
 # intermix-plugin-template
-A template for developers of intermix plugins
+A template for intermix plugin development.
 
 **Warning**: This is under heavy development. Don't use it until intermix v0.7.0 is out (which will be in late September 2020).
 
