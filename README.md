@@ -1,9 +1,9 @@
 # intermix-plugin-template
 A template for developers of intermix plugins
 
-**Warning**: This is under heavy development. Don't use it until intermix v0.7.0 is out (which will be in mid September 2020).
+**Warning**: This is under heavy development. Don't use it until intermix v0.7.0 is out (which will be in late September 2020).
 
-**Very important warning**: We use redux as a dev dependency while we're in dev with a local intermix build. This should be removed asap!
+**Very important warning**: We use redux as a dependency while we're in dev with a local intermix build. It WILL NOT WORK at this point without a local intermix npm package from the intermix master branch!
 
 ## Install
 
